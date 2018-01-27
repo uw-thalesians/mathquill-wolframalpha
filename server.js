@@ -1,14 +1,10 @@
-const https = require('https');
 const express = require('express');
-//var cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 
 const fs = require('fs');
 
 const WolframAlphaAPI = require('wolfram-alpha-api');
-
-//app.use(cors())
 
 app.use(bodyParser.urlencoded({
     extended: true
