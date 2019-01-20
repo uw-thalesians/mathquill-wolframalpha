@@ -51,16 +51,25 @@ $(document).ready(function(){
             if(!output)
             {
                 var queryresult = data.result;
+                if(queryresult.numpods>0){
+                    const pods = queryresult.pods;
+                    
+                    output = pods.map((pod) => {
+                    const subpodContent = pod.subpods.map(subpod =>
+                    `  <img src="${subpod.img.src}" alt="${subpod.img.alt}">`
+                        ).join('\n');
+                        return `<h2>${pod.title}</h2>\n${subpodContent}`;
+                        }).join('\n');
 
-                const pods = queryresult.pods;
-                output = pods.map((pod) => {
-                const subpodContent = pod.subpods.map(subpod =>
-                `  <img src="${subpod.img.src}" alt="${subpod.img.alt}">`
-                    ).join('\n');
-                    return `<h2>${pod.title}</h2>\n${subpodContent}`;
-                    }).join('\n');
+                    //console.log(output);
+                } else if(queryresult.didyoumeans){
+                    output = queryresult.didyoumeans.map(mean => `<h2>Did you mean ${mean.val}?</h2>`);
+                } else if(queryresult.tips){
+                    output = queryresult.tips.map(tip => ` <h2>${tip.text}</h2>`);
 
-                //console.log(output);
+                } else {
+                    output = "There was an error processing the query or result data."
+                }
             }
             
             $("#results").html(output);

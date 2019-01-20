@@ -13,7 +13,10 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "mathquill": "0.10.1-a",
+    "mathquill": "^0.10.1",
     "wolfram-alpha-api": "https://products.wolframalpha.com/api/libraries/javascript/wolfram-alpha-api-1.0.0-rc.1.tgz"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }
